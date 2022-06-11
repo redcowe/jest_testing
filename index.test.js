@@ -28,4 +28,17 @@ describe("String tests", () => {
      it('calculator divide', () => {
       expect(calculator.divide(4,2)).toBe(2);
      })
+
+     it('caeser cipher all lowercase', () => {
+      expect(caesarCipher("hello", 17)).toBe("yvccf");
+     })
+
+     it('caesar cipher all uppercase', () => {
+      expect(caesarCipher("HELLO", 17)).toBe("YVCCF");
+     })
+
+     it('caesar cipher space', () => {
+      expect(caesarCipher("hel lo", 17)).toBe("yvc cf");
+     })
+
 })

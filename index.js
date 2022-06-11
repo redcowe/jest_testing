@@ -16,30 +16,34 @@ const calculator = {
 function caesarCipher(string, shift) {
     //array for holding cipher text values
     let cipherText = [];
-    splitString = string.split("");
+    let splitString = string.split("");
+
     splitString.forEach(val => {
         let ascii = val.charCodeAt(0);
-        
+        let asciiCipher = 0;
+        //checking for spaces
         if (ascii == 32) {
             cipherText.push(String.fromCharCode(ascii));
         }
         //checking lowercase values
         else if (ascii >= 97 && ascii + shift > 122) {
-            let asciiCipher = (ascii + shift) - 26;
+            asciiCipher = (ascii + shift) - 26;
             cipherText.push(String.fromCharCode(asciiCipher));
         }
-        // //checking for uppercase letters
-        // else if (ascii >= 65 && ascii + shift > 90) {
-        //     let asciiCipher
-        // }
+        //checking for uppercase values
+        else if (ascii >= 65 && ascii <= 90 && ascii + shift > 90) {
+            asciiCipher = (ascii + shift) - 26;
+            cipherText.push(String.fromCharCode(asciiCipher));
+        }
         else {
             cipherText.push(String.fromCharCode(ascii + shift));
         }
     })
+    
     return cipherText.join("");
     
 }
-console.log(caesarCipher("hello", 10));
+console.log(caesarCipher("HEL LO", 17));
 
 module.exports =  {
     capitalize: capitalize,
